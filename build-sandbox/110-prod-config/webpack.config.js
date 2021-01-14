@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = (env = {}) => {
@@ -21,6 +22,9 @@ module.exports = (env = {}) => {
         title: 'Hello World',
         buildTime: new Date().toISOString(),
         template: 'public/index.html'
+      }),
+      new ScriptExtHtmlWebpackPlugin({
+        inline: [/\.js$/]
       })
     ];
 
@@ -29,6 +33,7 @@ module.exports = (env = {}) => {
           filename: 'main-[hash:8].css'
         })
       );
+
     }
 
     return plugins;
