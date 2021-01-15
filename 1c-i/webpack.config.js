@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HTMLInlineCSSWebpackPlugin = require("html-inline-css-webpack-plugin").default;
 
 module.exports = (env = {}) => {
 
@@ -25,7 +26,8 @@ module.exports = (env = {}) => {
       }),
       new ScriptExtHtmlWebpackPlugin({
         inline: [/\.(js|css)$/]
-      })
+      }),
+      new HTMLInlineCSSWebpackPlugin()
     ];
 
     if (isProd) {
